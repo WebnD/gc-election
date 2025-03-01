@@ -59,7 +59,7 @@ export default function Home() {
     const response = await fetch("/api/vote-complete", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ selectedCandidate }),
+      body: JSON.stringify({ selectedCandidate , email}),
     })
     
     setIsLoading(false)
