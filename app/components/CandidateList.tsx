@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // const candidates = {
 //   "ECE+Meta+EP": [
@@ -16,6 +17,9 @@ import { useEffect, useState } from "react"
 //   ],
 // }
 
+interface CandidateAvatarProps {
+  candidate: Candidate;
+}
 export default function CandidateList({ email, selectedCandidate, onSelectCandidate, onSubmitVote }: {email: string, selectedCandidate: Candidate, onSelectCandidate: (candidate: Candidate)=>void, onSubmitVote: ()=>void}) {
 
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -69,6 +73,22 @@ export default function CandidateList({ email, selectedCandidate, onSelectCandid
   }
   
 
+  const CandidateAvatar: React.FC<CandidateAvatarProps> = ({ candidate }) => {
+    return (
+      <Avatar className="w-20 h-20">
+        <AvatarImage src={candidate.photo} alt={candidate.name} width={120}
+                  height={120}
+                  className="rounded-full object-cover w-full h-full"/>
+        <AvatarFallback>
+          {candidate.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase()}
+        </AvatarFallback>
+      </Avatar>
+    );
+  };
   
 
   return (
@@ -96,13 +116,7 @@ export default function CandidateList({ email, selectedCandidate, onSelectCandid
                   aria-checked={selectedCandidate.$id === candidate.$id}
                   data-state={selectedCandidate.$id === candidate.$id ? "checked" : "unchecked"}
                 />
-                <Image
-                  src={candidate.photo || "/placeholder.svg"}
-                  alt={candidate.name}
-                  width={120}
-                  height={120}
-                  className="rounded-full"
-                />
+                <CandidateAvatar candidate={candidate} />
                 <Label htmlFor={candidate.$id} className="flex flex-col cursor-pointer">
                   <span className="text-lg font-medium text-gray-900">{candidate.name}</span>
                   <span className="text-sm text-gray-500">Roll Number: {candidate.rollNumber}</span>
