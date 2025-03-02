@@ -34,9 +34,7 @@ export default function Home() {
 
       const data = await response.json();
       setIsLoggedIn(data);
-      if (!data) {
-        toast.error("You have already submitted your vote! ❌");
-      }
+      
     }
 
     checkVote(session?.user?.email!);
