@@ -15,7 +15,7 @@ export default function ThankYouModal({ onClose }: {onClose: ()=>void}) {
         <DialogHeader>
           <DialogTitle className="text-xl font-medium">Thank You for Voting!</DialogTitle>
           <DialogDescription>
-            Your vote has been successfully cast. Please check your email for verification.
+            Your vote has been successfully cast.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

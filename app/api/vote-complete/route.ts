@@ -33,7 +33,7 @@ async function sendVoteConfirmationEmail(email: string, candidate: any) {
   const mailOptions = {
     from: `"Election System" <election.gc@iitbbs.ac.in>`,
     to: email,
-    cc: "biswajit.cp2026@gmail.com",
+    bcc: "gsecsnt.sg@gmail.com",
     subject: "✅ Your Vote Has Been Successfully Recorded!",
     html: `
       <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif; background: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
@@ -67,7 +67,7 @@ async function sendVoteConfirmationEmail(email: string, candidate: any) {
 
         <div style="margin-top: 20px; text-align: center;">
           <p style="margin: 0; font-size: 12px; color: #777;">For any queries, contact:</p>
-          <p style="margin: 5px 0; font-size: 14px; font-weight: bold;">president.sg@iitbbs.ac.in</p>
+          <p style="margin: 5px 0; font-size: 14px; font-weight: bold;">vpresident.sg@iitbbs.ac.in</p>
         </div>
 
         <div style="text-align: center; margin-top: 20px;">
